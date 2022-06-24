@@ -26,7 +26,6 @@ app.get('/products', async (req, res) => {
     const {category} = req.query;
     if (category) {
         const products = await Product.find({category});
-        //render是自动去views文件夹里面去找，所以res.render('products/index.ejs', {products})而不是res.render('/products/index.ejs', {products});
         res.render('products/index.ejs', {products, category});
     } else {
         const products = await Product.find({});
@@ -41,7 +40,6 @@ app.get('/products/new', (req, res) => {
 
 app.post('/products', async (req, res) => {
     const newProduct = new Product(req.body);
-    //要等一会，等save存完再继续往下走
     await newProduct.save();
     res.redirect(`/products/${newProduct._id}`);
 })
@@ -65,7 +63,6 @@ app.get('/products/:id', async (req, res) => {
 })
 
 app.delete('/products/:id', async (req, res) => {
-    console.log("hello");
     const {id} = req.params;
     const deletedProduct = await Product.findByIdAndDelete(id);
     res.redirect('/products');
