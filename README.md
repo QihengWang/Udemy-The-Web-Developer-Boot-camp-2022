@@ -1,2 +1,2 @@
 # Udemy-The-Web-Developer-Boot-camp-2022
-Answers for Code Exercises and practice projects.
+Answers for code exercises and practice projects.
